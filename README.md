@@ -5,19 +5,19 @@ A digital clock showing the time, date, day of the week, local temperature **AND
 
 The code is entirely python-based. The build is easy and solder-free.
 
-[![](https://i.imgur.com/SM2zNi8.png?raw=true)](https://i.imgur.com/SM2zNi8.png)
+<br></br>
 
+| Finished ETHclock (front)   | Finished ETHclock (back)   |
+| ------------- | -------------|
+| [![](https://i.imgur.com/J0NngF4.png?raw=true)](https://i.imgur.com/J0NngF4.png.jpg)   |   [![](https://i.imgur.com/hw6ClAO.png?raw=true)](https://i.imgur.com/hw6ClAO.png)   |
+
+<br></br>
 
 ## Hardware
 + [Raspberry Pi Zero 2 WH](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/)
-+ [Adafruit monochrome 1.3" Display (Qwiic compatible)](https://www.adafruit.com/product/938)
++ [Adafruit Monochrome 1.3" Display (Qwiic-compatible)](https://www.adafruit.com/product/938)
 + [SparkFun Qwiic SHIM](https://www.sparkfun.com/products/15794)
 + [SparkFun Qwiic Cable](https://www.sparkfun.com/products/14427)
-
-## Case
-+ [GeeekPi Transparent Acrylic Case for Raspberry Pi Zero](https://smile.amazon.de/gp/product/B07MGFRHHR)
-+ [Platic Hexagonal Spacers](https://smile.amazon.de/gp/product/B07CJGT93C?psc=1)
-
 
 ## Setup
 1. Flash [Pi OS](https://www.raspberrypi.com/software/) onto the microSD card (SSH enabled), assemble the hardware and make the device connect to your WiFi.
@@ -34,3 +34,13 @@ The code is entirely python-based. The build is easy and solder-free.
    - Paste your API keys from Etherscan and Openweather into the script
    - Make sure to edit permissions of files/folders, so the script can read, write and execute adequately (`sudo chmod 777 -R` your shazampi folder)
    - Make `ethclock.py` autostart on bootup
+   
+## Case
++ [GeeekPi Transparent Acrylic Case for Raspberry Pi Zero](https://smile.amazon.de/gp/product/B07MGFRHHR)
++ [Platic Hexagonal Spacers](https://smile.amazon.de/gp/product/B07CJGT93C?psc=1)
++ [Copper CPU Cooler](https://smile.amazon.de/-/en/gp/product/B01BJ3S73S?psc=1)
+
+ 1. From the transparent acrylic case, a little bit was cut off with a Stanley knife in order to make space for the Qwiic SHIM breakout. 
+ 2. A copper cooler was applied for the CPU. You do not necessarily need one for this device.
+ 3. Two plastic hexagonal spacers were shaped with Stanley knife and mounted to the bottom case screws, so the entire device could stand properly.
+ 4. The display was attached with a little bit of hot glue
