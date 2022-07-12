@@ -59,4 +59,4 @@ You will need to paste both API keys and the data for langitude and latitude int
  3. Shape two plastic hexagonal spacers with a Stanley knife and mount them to the bottom case screws, so the device can stand properly.
  4. Attach the display with a little bit of hot glue. Be careful not to damage it.
 
-Obviously, this is just how I did it. There are endless possibilities on how to make your ETHclock look. By now, I've built a few of these with several different displays using various stands, so please don't feel like you have to "go by the book" here.
+Obviously, this is just how I did it. There are endless possibilities on how to make your ETHclock look. By now, I've built a few of these with different displays and stands, so please don't feel like you have to "go by the book" here.
