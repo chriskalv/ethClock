@@ -1,13 +1,18 @@
 ETHclock
 ========================
 
-A digital clock showing the time, date, day of the week, local temperature **AND** the current block of the Ethereum blockchain.
+A digital table clock showing the 
+  - time
+  - date
+  - day of the week
+  - local temperature ***AND***
+  - the current block of the Ethereum blockchain.
 
-The code is entirely python-based. The build is easy and solder-free.
+The code is entirely python-based and pulls time data from the internet, not from a RTC chip like in some other clock builds. Assembly of the device is really easy and even solder-free in case you have a Pi Zero **WH** model. 
 
 <br></br>
 
-| Finished ETHclock (front)   | Finished ETHclock (back)   |
+| Finished clock (front)   | Finished clock (back)   |
 | ------------- | -------------|
 | [![](https://i.imgur.com/J0NngF4.png?raw=true)](https://i.imgur.com/J0NngF4.png.jpg)   |   [![](https://i.imgur.com/hw6ClAO.png?raw=true)](https://i.imgur.com/hw6ClAO.png)   |
 
@@ -18,22 +23,30 @@ The code is entirely python-based. The build is easy and solder-free.
 + [Adafruit Monochrome 1.3" Display (Qwiic-compatible)](https://www.adafruit.com/product/938)
 + [SparkFun Qwiic SHIM](https://www.sparkfun.com/products/15794)
 + [SparkFun Qwiic Cable](https://www.sparkfun.com/products/14427)
++ [MicroSD Card](https://www.westerndigital.com/products/memory-cards/sandisk-high-endurance-uhs-i-microsd#SDSQQNR-032G-GN6IA) (pretty much any will do)
 
 ## Setup
+#### I. Data Preparation
+1. Create the API key that is needed in order to request the current Ethereum block:
+    1. Head over to [Etherscan.io](https://etherscan.io/) and create an account.
+    2. Go to _[My Profile](https://etherscan.io/myaccount)_ --> _API Keys_ --> _Add_, then enter a name and create the key.
+2. Create the API key that is needed in order to get the current temperature:
+    1. Head over to [OpenWeatherMap.org](https://openweathermap.org/) and create an account.
+    2. Go to _[My API Keys](https://home.openweathermap.org/api_keys)_, enter a name below _Create Key_ and hit _Generate_.
+3. Convert the address, for which the temperature should be displayed, into longitude/latitude coordinates with help of [LatLong.net](https://www.latlong.net/convert-address-to-lat-long.html).
+
+You will need to paste both API keys and the data for langitude and latitude into the `ethclock.py` script later on, so you might want to already paste them somewhere you can find them quickly.
+
+#### II. Device Work
 1. Flash [Pi OS](https://www.raspberrypi.com/software/) onto the microSD card (SSH enabled), assemble the hardware and make the device connect to your WiFi.
 2. `sudo apt-get update && sudo apt-get upgrade -y`
-3. Install the Adafruit SSD1306 library in order for your display to work. You can find the Instructions [here](https://learn.adafruit.com/monochrome-oled-breakouts/python-setup)
-4. Create the API key that is needed in order to show the current ETH block:
-  1. Head over to [Etherscan.io](https://etherscan.io/) and create an account.
-  2. Go to __[My Profile](https://etherscan.io/myaccount)__ --> __API Keys__ --> __Add +__  --> Enter a name and create the key.
-5. Create the API key that is needed in order to display the current temperature:
-  1. Head over to [OpenWeatherMap.org](https://openweathermap.org/) and create an account.
-  2. Go to __[My API Keys](https://home.openweathermap.org/api_keys)__, enter a name below __Create Key__ and hit __Generate__.
-  3. Make sure the __Status__ of the newly generated key is set to 'active'.
-7. Copy the `ethclock.py` file to your device and edit the 'Global Settings' section of the script:
-   - Paste your API keys from Etherscan and Openweather into the script
-   - Make sure to edit permissions of files/folders, so the script can read, write and execute adequately (`sudo chmod 777 -R` your shazampi folder)
-   - Make `ethclock.py` autostart on bootup
+3. Install the Adafruit SSD1306 library in order for your display to work. You can find the Instructions [here](https://learn.adafruit.com/monochrome-oled-breakouts/python-setup).
+4. Copy the `ethclock.py` file to your device and edit the **Global Settings** section at the top of the script:
+    1. Paste your API keys from Etherscan and Openweather as well as your longitude/latitude data into the script.
+    2. Change the displayed language and temperature scale to your liking.
+5. Make sure to edit permissions of files/folders, so the script can read, write and execute adequately (`sudo chmod 777 -R ethclock.py` will do)
+6. Make `ethclock.py` autostart on bootup. Some instructions on how this can be done are [here](https://transang.me/three-ways-to-create-a-startup-script-in-ubuntu/).
+7. If you want to disable the green status LED on the Pi Zero board, which some people find annoying, you can find out how to do that in [this]((https://www.cnx-software.com/2021/12/09/raspberry-pi-zero-2-w-power-consumption/) post.
    
 ## Case
 + [GeeekPi Transparent Acrylic Case for Raspberry Pi Zero](https://smile.amazon.de/gp/product/B07MGFRHHR)
@@ -41,6 +54,8 @@ The code is entirely python-based. The build is easy and solder-free.
 + [Copper CPU Cooler](https://smile.amazon.de/-/en/gp/product/B01BJ3S73S?psc=1)
 
  1. From the transparent acrylic case, a little bit was cut off with a Stanley knife in order to make space for the Qwiic SHIM breakout. 
- 2. A copper cooler was applied for the CPU. You do not necessarily need one for this device.
+ 2. A copper cooler was placed onto the CPU. Any cooler will do and I'm pretty sure you do not really need one for this build.
  3. Two plastic hexagonal spacers were shaped with Stanley knife and mounted to the bottom case screws, so the entire device could stand properly.
  4. The display was attached with a little bit of hot glue
+
+Obviously, this is just how I did it. There are endless possibilities on how to make your ETHclock look. By now, I've built a few of these with several different displays using various stands, so please don't feel like you have to "go by the book" here.
